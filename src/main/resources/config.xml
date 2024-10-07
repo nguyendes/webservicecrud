@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="db.driver">com.mysql.cj.jdbc.Driver</entry>
+    <entry key="db.url">jdbc:mysql://localhost:3306/db_ban_hang</entry>
+    <entry key="db.user">root</entry>
+    <entry key="db.password">1410</entry>
+</properties>
