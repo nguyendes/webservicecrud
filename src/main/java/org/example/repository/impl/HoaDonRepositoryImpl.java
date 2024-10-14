@@ -14,8 +14,32 @@ import java.util.List;
 
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
+
     private KhachHangRepository khachHangRepository = new KhachHangRepositoryImpl();
 
+    @Override
+    public List<HoaDon> xemHD() {
+        List<HoaDon> list = new ArrayList<>();
+        String sql = "SELECT * FROM db_ban_hang.hoa_don ";
+        try (Connection connection = DriverManagerConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                HoaDon hd = new HoaDon();
+                hd.setId(rs.getInt("id"));
+                hd.setIdKhachHang(rs.getInt("id_khach_hang"));
+                hd.setTrangThai(rs.getString("trang_thai"));
+                hd.setNgayTao(rs.getDate("ngay_tao"));
+                hd.setNgaySua(rs.getDate("ngay_sua"));
+                hd.setDiaChi(rs.getString("dia_chi"));
+                hd.setSoDienThoai(rs.getString("so_dien_thoai"));
+                list.add(hd);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     @Override
     public List<HoaDon> getAllHD() {

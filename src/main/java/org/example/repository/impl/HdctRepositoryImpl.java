@@ -92,15 +92,15 @@ public class HdctRepositoryImpl implements HdctRepository {
     }
 
     @Override
-    public Hdct getHDCTById(int id) {
-        Hdct hdct = null;
-        String sql = "SELECT * FROM hdct WHERE id = ?";
+    public List<Hdct> getHDCTById(int id) {
+        List<Hdct> listhdct = new ArrayList<>();
+        String sql = "SELECT * FROM hdct WHERE id_hoa_don = ?";
         try (Connection connection = DriverManagerConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    hdct = new Hdct();
+                while (rs.next()) {
+                    Hdct hdct = new Hdct();
                     hdct.setId(rs.getInt("id"));
                     hdct.setIdHoaDon(rs.getInt("id_hoa_don"));
                     hdct.setIdCtsp(rs.getInt("id_ctsp"));
@@ -110,11 +110,13 @@ public class HdctRepositoryImpl implements HdctRepository {
                     hdct.setTrangThai(rs.getString("trang_thai"));
                     hdct.setNgayTao(rs.getDate("ngay_tao"));
                     hdct.setNgaySua(rs.getDate("ngay_sua"));
+
+                    listhdct.add(hdct);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return hdct;
+        return listhdct;
     }
 }

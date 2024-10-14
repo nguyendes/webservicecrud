@@ -121,8 +121,7 @@
                     <input type="hidden" name="idSp${status.index}" value="${ctspDetails.id}">
                     <input type="hidden" name="giaBan${status.index}" value="${ctspDetails.giaBan}">
                     <input type="hidden" class="tongTienSanPhamHidden" name="tongTien${status.index}" value="0">
-                    <td>
-                        <input type="number" name="soLuongMua${status.index}" value="0" min="0" max="${ctspDetails.soLuongTon}" required
+                    <td><input type="number" name="soLuongMua${status.index}" value="0" min="0" max="${ctspDetails.soLuongTon}" required
                                class="soLuongMua"
                                data-gia-ban="${ctspDetails.giaBan}"
                                oninput="calculateTotal(this)">
@@ -138,6 +137,7 @@
     </form>
 </c:if>
 
+<a href="/index">Quay Lại Trang Chính</a>
 
 </body>
 </html>

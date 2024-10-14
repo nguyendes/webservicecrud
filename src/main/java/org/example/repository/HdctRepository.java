@@ -10,5 +10,5 @@ public interface HdctRepository {
     boolean themHDCT(Hdct hdct,int idHoaDon);
     boolean capnhatHD(Hdct hdct);
     boolean xoaHDCT(int id);
-    Hdct getHDCTById(int id);
+    List<Hdct> getHDCTById(int id);
 }

@@ -6,6 +6,7 @@ import org.example.entity.SanPham;
 import java.util.List;
 
 public interface HoaDonRepository {
+    List<HoaDon> xemHD();
     List<HoaDon> getAllHD();
     boolean themHD(HoaDon hd, String soDienThoai);
     boolean capnhatHD(HoaDon hd);
